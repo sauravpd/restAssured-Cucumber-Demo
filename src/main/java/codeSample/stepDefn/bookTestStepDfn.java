@@ -37,13 +37,11 @@ public class bookTestStepDfn extends ApiBaseTest
 	{
 		Assert.assertEquals(response.getStatusCode(),Integer.parseInt(statusCode));
 	}
-	
+
 	@Then("^response includes the following details$")
 	public void response_includes_the_following_details(DataTable table) throws Throwable 
 	{
-		Map<String, String> expectedResponseMap = table.asMap(String.class,String.class);
-		for (Map.Entry<String, String> field : expectedResponseMap.entrySet()) {
-			System.out.println(field.getKey()+" : "+field.getValue());
-		}
+		Map<String, String> expectedResponseMap = table.asMap(String.class,String.class);	
+		Assert.assertTrue(response.jsonPath().getString("items.volumeInfo.title").contains(expectedResponseMap.get("items.volumeInfo.title")));
 	}
 }
