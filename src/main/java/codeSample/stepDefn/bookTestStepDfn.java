@@ -43,5 +43,6 @@ public class bookTestStepDfn extends ApiBaseTest
 	{
 		Map<String, String> expectedResponseMap = table.asMap(String.class,String.class);	
 		Assert.assertTrue(response.jsonPath().getString("items.volumeInfo.title").contains(expectedResponseMap.get("items.volumeInfo.title")));
+		Assert.assertTrue(response.jsonPath().getString("items.volumeInfo.authors").contains(expectedResponseMap.get("items.volumeInfo.authors")));
 	}
 }
